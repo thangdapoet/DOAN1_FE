@@ -15,6 +15,7 @@ import {
 } from "recharts";
 
 function App() {
+  const [scrondices, setScrollices] = useState({});
   const [scrollIndices, setScrollIndices] = useState({});
   const viewWindowSize = 20;
   const [Temp, setTemp] = useState(null);
