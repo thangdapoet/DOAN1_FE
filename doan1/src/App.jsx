@@ -429,8 +429,22 @@ function App() {
                       fontWeight: "700", // Đậm hơn
                       padding: "5px 0",
                     }}
-                    formatter={(value, name) => [`${value} ppm`, name]} // Thêm đơn vị
-                    labelStyle={{ display: "none" }}
+                    formatter={(value, name) => [`${value} ppm`, name]}
+                    labelStyle={{
+                      color: "#fff",
+                      fontWeight: "700",
+                      fontSize: "18px",
+                    }}
+                    labelFormatter={(label) => {
+                      if (!label) return "";
+
+                      const timepart = label.split("T")[1];
+                      if (!timepart) return label;
+
+                      const time = timepart.split(".")[0];
+                      const hhmm = time.split(":").slice(0, 2).join(":");
+                      return `Thời gian: ${hhmm}`;
+                    }}
                   />
                   <Legend
                     wrapperStyle={{
