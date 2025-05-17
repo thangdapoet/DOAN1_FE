@@ -442,8 +442,8 @@ function App() {
                       if (!timepart) return label;
 
                       const time = timepart.split(".")[0];
-                      const hhmm = time.split(":").slice(0, 2).join(":");
-                      return `Thời gian: ${hhmm}`;
+                      //const hhmm = time.split(":").slice(0, 2).join(":");
+                      return `Thời gian: ${time}`;
                     }}
                   />
                   <Legend
