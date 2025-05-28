@@ -26,7 +26,6 @@ function App() {
 
   const apiUrl = import.meta.env.VITE_API_URL;
 
-  // Fetch sessions
   useEffect(() => {
     const fetchSessions = async () => {
       try {
@@ -74,7 +73,7 @@ function App() {
     fetchTemp();
   }, []);
 
-  // WebSocket for real-time updates
+  // WebSocket
   useEffect(() => {
     const wsUrl = import.meta.env.VITE_WEBSOCKET_URL;
     const ws = new WebSocket(wsUrl);
@@ -159,7 +158,7 @@ function App() {
     if (data.length % 10 !== 0) {
       processedData.push(data[data.length - 1]);
     }
-    return data;
+    return processedData;
   };
 
   const processedData = processData(Data);
@@ -182,7 +181,7 @@ function App() {
 
     return (
       <div style={{ textAlign: "center", marginBottom: "40px" }}>
-        <h3 style={{ color: "#ffffff", marginLeft: "-15px", fontSize: "24px" }}>
+        <h3 style={{ color: "#ffffff", marginLeft: "-15px", fontSize: "30px" }}>
           Độ ẩm
         </h3>
         <PieChart width={200} height={200}>
@@ -220,6 +219,7 @@ function App() {
       [key]: value,
     }));
   };
+  ////////////////////////////////////////////////////
 
   return (
     <div style={{ padding: "20px" }}>
@@ -229,12 +229,12 @@ function App() {
           margin: "30px 0 40px 110px",
           display: "flex",
           alignItems: "center",
-          gap: "15px",
+          gap: "30px",
         }}
       >
         <label
           style={{
-            fontSize: "1.5rem",
+            fontSize: "30px",
             fontWeight: "bold",
             whiteSpace: "nowrap",
           }}
@@ -248,7 +248,7 @@ function App() {
             color: "white",
             borderRadius: "6px",
             padding: "10px 15px",
-            fontSize: "1.2rem",
+            fontSize: "20px",
             minWidth: "250px",
             cursor: "pointer",
             transition: "all 0.3s ease",
@@ -295,7 +295,7 @@ function App() {
         >
           <div
             style={{
-              fontSize: "1.5rem",
+              fontSize: "30px",
               color: "#ffffff",
               fontWeight: "bold",
               display: "flex",
@@ -303,7 +303,7 @@ function App() {
               gap: "10px",
             }}
           >
-            <span style={{ fontSize: "1.8rem" }}>🌡️</span>
+            <span style={{ fontSize: "30px" }}>🌡️</span>
             Nhiệt độ: {Data[Data.length - 1].nhietdo.toFixed(1)} °C
           </div>
           {renderHumidityChart(Data[Data.length - 1].doam)}
@@ -314,8 +314,9 @@ function App() {
         style={{
           textAlign: "center",
           color: "#ffffff",
-          fontSize: "40px",
-          marginBottom: "50px",
+          fontSize: "50px",
+          marginTop: "80px",
+          marginBottom: "40px",
           marginLeft: "110px",
         }}
       >
@@ -326,12 +327,12 @@ function App() {
       <div
         style={{
           width: "100%",
-          marginLeft: "110px", // Điều chỉnh giá trị này để dịch sang phải
-          maxWidth: "calc(100% - 200px)", // Giữ cho biểu đồ không bị tràn
+          marginLeft: "110px",
+          maxWidth: "calc(100% - 200px)",
         }}
       >
         {gasCharts.map(({ key, name, color }) => {
-          const containerWidth = 1000; // fixed visible chart size
+          const containerWidth = 1000;
           const spacingPerPoint = 50;
           const contentWidth = Math.max(
             processedData.length * spacingPerPoint,
