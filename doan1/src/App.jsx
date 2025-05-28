@@ -41,8 +41,7 @@ function App() {
 
     fetchSessions();
   }, []);
-
-  // Fetch data based on selected session
+  //xuat data dua tren selectedSession
   useEffect(() => {
     if (selectedSession !== null) {
       const fetchDataBySession = async () => {
@@ -426,8 +425,8 @@ function App() {
                     }}
                     itemStyle={{
                       color: "#fff",
-                      fontSize: "22px", // Tăng cỡ chữ
-                      fontWeight: "700", // Đậm hơn
+                      fontSize: "22px",
+                      fontWeight: "700",
                       padding: "5px 0",
                     }}
                     formatter={(value, name) => [`${value} ppm`, name]}
