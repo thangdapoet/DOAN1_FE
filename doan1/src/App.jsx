@@ -58,7 +58,7 @@ function App() {
     }
   }, [selectedSession]);
 
-  // Fetch latest temperature data
+  //data moi nhat
   useEffect(() => {
     const fetchTemp = async () => {
       try {
@@ -260,9 +260,9 @@ function App() {
           </option>
           {Sessions.map((session) => (
             <option key={session.session_id} value={session.session_id}>
-              {`Phiên ${session.session_id} - ${new Date(
-                session.created_at
-              ).toLocaleDateString("vi-VN")}`}
+              {`Phiên ${session.session_id} - ${
+                new Date(session.created_at).toISOString().split("T")[0]
+              }`}
             </option>
           ))}
         </select>
